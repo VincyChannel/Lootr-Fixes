@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.vincychannel.lootrfix.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "mixins": [
+    "MixinLootrChestMCartEnt",
+    "MixinChestUtil"
+  ],
+  "client": [],
+  "server": []
+}

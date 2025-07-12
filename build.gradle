@@ -1,0 +1,102 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url = "https://maven.minecraftforge.net/" }
+        maven { url = "https://repo.spongepowered.org/maven" }
+    }
+
+    dependencies {
+        classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "5.1.+"
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
+apply plugin: "java"
+apply plugin: "net.minecraftforge.gradle"
+apply plugin: 'org.spongepowered.mixin'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+compileJava {
+    sourceCompatibility = "8"
+    targetCompatibility = "8"
+}
+
+repositories {
+    maven {
+        url = "https://maven.minecraftforge.net/"
+    }
+    maven {
+        url = "https://repo.spongepowered.org/maven"
+    }
+    maven {
+        url "https://www.cursemaven.com"
+    }
+    maven {
+        url 'https://maven.cleanroommc.com'
+    }
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    annotationProcessor 'org.ow2.asm:asm-debug-all:5.2'
+    annotationProcessor 'com.google.guava:guava:32.1.2-jre'
+    annotationProcessor 'com.google.code.gson:gson:2.8.9'
+
+    implementation ('zone.rong:mixinbooter:10.0') {
+        transitive = false
+    }
+    annotationProcessor ('zone.rong:mixinbooter:10.0') {
+        transitive = false
+    }
+
+    implementation fg.deobf("curse.maven:lootr-361276:4756301")
+}
+
+minecraft {
+    mappings channel: findProperty("mapping_channel"), version: findProperty("mapping_version")
+
+    //runs {
+    //    "client" {
+    //        workingDirectory file("./run")
+    //        mods { "${project.name}" { source sourceSets.main } }
+    //    }
+
+    //    "server" {
+    //        workingDirectory file("./run/server")
+    //        mods { "${project.name}" { source sourceSets.main } }
+    //    }
+    //}
+}
+
+processResources {
+    filesMatching("mcmod.info") {
+        expand([
+            "mod_id"            : findProperty("mod_id"),
+            "mod_name"          : findProperty("mod_name"),
+            "mod_description"   : findProperty("mod_description"),
+            "mod_version"       : findProperty("mod_version"),
+            "minecraft_version" : findProperty("minecraft_version"),
+            "mod_author"        : findProperty("mod_author"),
+            "mod_license"       : findProperty("mod_license"),
+            "mod_url"           : findProperty("mod_url"),
+            "mod_logoFile"      : findProperty("mod_logoFile"),
+            "mod_updateUrl"    : findProperty("mod_updateUrl")
+        ])
+    }
+}
+
+jar {
+    archiveBaseName.set(findProperty("mod_name"))
+    archiveVersion.set(findProperty("minecraft_version") + "-" + findProperty("mod_version"))
+
+    manifest.attributes(
+            'ForceLoadAsMod': 'true',
+            'FMLCorePluginContainsFMLMod': 'true',
+    )
+}
+
+sourceSets.all { it.output.resourcesDir = it.output.classesDirs.getFiles().iterator().next() }
