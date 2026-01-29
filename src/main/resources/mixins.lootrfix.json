@@ -4,8 +4,9 @@
   "compatibilityLevel": "JAVA_8",
   "target": "@env(DEFAULT)",
   "mixins": [
+    "MixinChestUtil",
     "MixinLootrChestMCartEnt",
-    "MixinChestUtil"
+    "MixinTrophyBlock"
   ],
   "client": [],
   "server": []
