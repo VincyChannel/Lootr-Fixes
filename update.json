@@ -2,10 +2,11 @@
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/lootr-fixes",
   "1.12.2": {
     "1.0": "First Release",
-    "1.1": "Fixed X-Ray Glitch of Centennial Trophy Block"
+    "1.1": "Fixed X-Ray Glitch of Centennial Trophy Block",
+    "1.2": "Fix RLArtifacts mod's mimic spawning on already-opened Lootr chests"
   },
   "promos": {
-    "1.12.2-latest": "1.1",
-    "1.12.2-recommended": "1.1"
+    "1.12.2-latest": "1.2",
+    "1.12.2-recommended": "1.2"
   }
 }

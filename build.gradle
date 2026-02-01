@@ -98,6 +98,7 @@ jar {
             'ForceLoadAsMod': 'true',
             'FMLCorePluginContainsFMLMod': 'true',
     )
+    destinationDirectory.set(file("$rootDir/output"))
 }
 
 sourceSets.all { it.output.resourcesDir = it.output.classesDirs.getFiles().iterator().next() }

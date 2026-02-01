@@ -13,10 +13,8 @@
       "license": "${mod_license}",
       "screenshots": [],
       "dependencies": [
-        "railcraft"
-      ],
-      "requiredMods": [
-        "railcraft"
+        "lootr",
+        "mixinbooter"
       ]
     }
 ]
