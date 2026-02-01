@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "com.vincychannel.lootrfix.mixin.rlartifacts",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "mixins": [
+    "MixinEntityMimic"
+  ],
+  "client": [],
+  "server": []
+}
