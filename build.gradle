@@ -54,6 +54,7 @@ dependencies {
     }
 
     implementation fg.deobf("curse.maven:lootr-361276:4756301")
+    implementation fg.deobf("curse.maven:rl-artifacts-819886:4475428")
 }
 
 minecraft {
